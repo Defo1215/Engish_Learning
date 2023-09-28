@@ -16,13 +16,13 @@
         :key="index"
         @click="changeTab(index)"
       >
-        <div class="text-3xl" :class="data.icon" />
+        <div class="text-3xl" :class="data.icon"/>
         <div
           class="text-sm transition-all duration-300"
           :class="
             tabbarStore.index === index
               ? 'opacity-100'
-              : 'opacity-0 -translate-x-10'
+              : 'opacity-0 -translate-x-1/2'
           "
         >
           {{ tabbarStore.index === index ? data.text : "" }}
