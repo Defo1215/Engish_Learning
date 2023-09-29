@@ -1,10 +1,12 @@
 <template>
   <div>
+    <router-view v-slot="{ Component }">
+      <component :is="Component" />
+    </router-view>
     <!-- 底部tabbar -->
-    <div class="absolute bottom-0 w-full p-3 ">
-      <Tabbar :tabs-content="tabsContent"/>
+    <div class="absolute bottom-0 w-full p-3">
+      <Tabbar :tabs-content="tabsContent" />
     </div>
-    
   </div>
 </template>
 
@@ -31,6 +33,6 @@ const tabsContent = [
     text: "写作",
     icon: "i-carbon-pen",
     path: "/composition",
-  }
-]
+  },
+];
 </script>
