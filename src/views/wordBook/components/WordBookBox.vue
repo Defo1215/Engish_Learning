@@ -4,6 +4,7 @@
     <div class="grid gap-2 grid-cols-1" v-if="props.showMode === 'single'">
       <div
         class="p-4 w-full rounded-md bg-white"
+        @click="emit('click', props.data)"
       >
         <div class="flex justify-between items-center">
           <div>{{ props.data.WordBookName }}</div>
@@ -18,6 +19,7 @@
         class="p-4 w-full rounded-md bg-white"
         v-for="(item, index) in props.data"
         :key="index"
+        @click="emit('click', item)"
       >
         <div class="flex justify-between items-center">
           <div>{{ item.WordBookName }}</div>
@@ -29,6 +31,9 @@
 </template>
 
 <script setup>
+
+const emit = defineEmits(["click"]);
+
 const props = defineProps({
   /**
    * 单词书数据

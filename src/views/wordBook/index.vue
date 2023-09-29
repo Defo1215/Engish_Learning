@@ -5,15 +5,22 @@
       <TitleBar title="单词书" :text-size="'26px'"/>
 
       <!-- 单词书数据 -->
-      <WordBookBox show-mode="multiple" :data="word" />
+      <WordBookBox show-mode="multiple" :data="word" @click="wordBookBoxClick" />
     </div>
   </div>
 </template>
 
 <script setup>
 import word from "../../config/word.json"
+import router from "../../router";
 import TitleBar from "./components/TitleBar.vue";
 import WordBookBox from "./components/WordBookBox.vue";
 
-
+/**
+ * 单词书点击事件
+ * @param {Object} item 单词书数据
+ */
+const wordBookBoxClick = (item) => {
+  router.push(`/word/${item.id}`)
+};
 </script>
