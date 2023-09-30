@@ -16,6 +16,10 @@ const routes = [
     ],
   },
   {
+    path: "/phrase",
+    component: Index
+  },
+  {
     path: "/word/:wordBookId",
     component: Word,
     props: true
