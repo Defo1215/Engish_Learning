@@ -42,7 +42,7 @@ const props = defineProps({
 });
 
 // tabbar的dom节点
-const tabItemRef = ref(null); 
+const tabItemRef = ref(null);
 
 // 盒子位置
 const boxRect = ref({
@@ -56,22 +56,19 @@ const tabIndex = computed({
   set: (value) => router.replace(props.tabsContent[value].path),
 });
 
-// 监听tabIndex的变化，更新盒子位置
-watch(
-  tabIndex,
-  () =>
-    nextTick(() => {
-      const tabItem = tabItemRef.value?.children[tabIndex.value]; // 获取选中的tab
-      boxRect.value = tabItem
-        ? {
-            width: tabItem.offsetWidth, // 获取选中的tab的宽度
-            left: tabItem.offsetLeft, // 获取选中的tab的偏移量
-          }
-        : {
-            width: 0,
-            left: 0,
-          };
-    }),
-  { immediate: true }
+onMounted(() =>
+  // 监听tabIndex的变化，更新盒子位置
+  watch(
+    tabIndex,
+    () =>
+      nextTick(() => {
+        const tabItem = tabItemRef.value.children[tabIndex.value]; // 获取选中的tab
+        boxRect.value = {
+          width: tabItem.offsetWidth, // 获取选中的tab的宽度
+          left: tabItem.offsetLeft, // 获取选中的tab的偏移量
+        };
+      }),
+    { immediate: true }
+  )
 );
 </script>
