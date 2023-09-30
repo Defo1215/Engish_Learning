@@ -4,8 +4,8 @@
     <div
       class="absolute left-0 h-10 rounded-xl bg-[#6366F1] transition-all duration-300"
       :style="{
-        width: selectBox.width + 'px',
-        transform: 'translateX(' + selectBox.translateX + 'px)',
+        width: boxRect.width + 'px',
+        transform: 'translateX(' + boxRect.left + 'px)',
       }"
     />
     <!-- 图标与标题 -->
@@ -14,18 +14,16 @@
         class="flex items-center px-3 py-1 gap-2 text-white font-bold z-100"
         v-for="(data, index) in tabsContent"
         :key="index"
-        @click="changeTab(index)"
+        @click="tabIndex = index"
       >
-        <div class="text-3xl" :class="data.icon"/>
+        <div class="text-3xl" :class="data.icon" />
         <div
           class="text-sm transition-all duration-300"
           :class="
-            tabbarStore.index === index
-              ? 'opacity-100'
-              : 'opacity-0 -translate-x-1/2'
+            tabIndex === index ? 'opacity-100' : 'opacity-0 -translate-x-1/2'
           "
         >
-          {{ tabbarStore.index === index ? data.text : "" }}
+          {{ tabIndex === index ? data.text : "" }}
         </div>
       </div>
     </div>
@@ -33,44 +31,47 @@
 </template>
 
 <script setup>
-import { nextTick } from "vue";
-import { useTabbarStore } from "../store/tabbarStore";
+import { computed, nextTick, onMounted, watchEffect } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
-const tabbarStore = useTabbarStore(); // 获取tabbar的store
+const route = useRoute();
+const router = useRouter();
 
 const props = defineProps({
   tabsContent: Array, // tabbar的内容
 });
 
-const tabItemRef = ref(null); // 获取tabbar的dom节点
+// tabbar的dom节点
+const tabItemRef = ref(null); 
 
-const selectBox = ref({ // 选择框的宽度与偏移量
+// 盒子位置
+const boxRect = ref({
   width: 0,
-  translateX: 0,
+  left: 0,
 });
 
-/**
- * 切换tab
- * @param {number} index 选中的tab索引
- */
-const changeTab = (index) => {
-  tabbarStore.changeIndex(index); // 改变tabbar的索引
-
-  // 通过nextTick确保dom已经渲染完毕
-  nextTick(() => {
-    const tabItem = tabItemRef.value.children[index]; // 获取选中的tab
-
-    const tabItemWidth = tabItem.offsetWidth; // 获取选中的tab的宽度
-    const tabItemLeft = tabItem.offsetLeft; // 获取选中的tab的偏移量
-
-    selectBox.value.width = tabItemWidth; // 设置选择框的宽度
-    selectBox.value.translateX = tabItemLeft; // 设置选择框的偏移量
-  });
-};
-
-onMounted(() => {
-  changeTab(tabbarStore.index); // 初始化tabbar的索引
+// 当前下标
+const tabIndex = computed({
+  get: () => props.tabsContent.findIndex((item) => item.path === route.path),
+  set: (value) => router.replace(props.tabsContent[value].path),
 });
+
+// 监听tabIndex的变化，更新盒子位置
+watch(
+  tabIndex,
+  () =>
+    nextTick(() => {
+      const tabItem = tabItemRef.value?.children[tabIndex.value]; // 获取选中的tab
+      boxRect.value = tabItem
+        ? {
+            width: tabItem.offsetWidth, // 获取选中的tab的宽度
+            left: tabItem.offsetLeft, // 获取选中的tab的偏移量
+          }
+        : {
+            width: 0,
+            left: 0,
+          };
+    }),
+  { immediate: true }
+);
 </script>
-
-<style></style>
