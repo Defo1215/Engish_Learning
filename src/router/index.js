@@ -23,7 +23,7 @@ const routes = [
     path: "/word/:wordBookId",
     component: Word,
     props: true
-  }
+  },
 ];
 
 const router = createRouter({

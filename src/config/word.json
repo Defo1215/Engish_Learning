@@ -1,12 +1,74 @@
 [
   {
-    "id": "1",
-    "WordBookName": "四级核心词汇",
-    "quantity": 1024
+    "id": 1,
+    "word": "hello",
+    "pronunciation": "/həˈlō/",
+    "translation": ["int.你好", "n.问候"],
+    "sentence": ["Hello world!", "Hello everyone!"],
+    "createTime": "2019-12-12 12:12:12",
+    "updateTime": "2019-12-12 12:12:12"
   },
   {
-    "id": "2",
-    "WordBookName": "六级核心词汇",
-    "quantity": 2048
+    "id": 2,
+    "word": "world",
+    "pronunciation": "/wərld/",
+    "translation": ["n.世界"],
+    "sentence": ["Hello world!", "I want to see the world."],
+    "createTime": "2019-12-12 12:12:12",
+    "updateTime": "2019-12-12 12:12:12"
+  },
+  {
+    "id": 3,
+    "word": "apple",
+    "pronunciation": "/ˈapəl/",
+    "translation": ["n.苹果"],
+    "sentence": ["I have an apple.", "I have an apple."],
+    "createTime": "2019-12-12 12:12:12",
+    "updateTime": "2019-12-12 12:12:12"
+  },
+  {
+    "id": 4,
+    "word": "banana",
+    "pronunciation": "/bəˈnanə/",
+    "translation": ["n.香蕉"],
+    "sentence": ["I have a banana.", "I have a banana."],
+    "createTime": "2019-12-12 12:12:12",
+    "updateTime": "2019-12-12 12:12:12"
+  },
+  {
+    "id": 5,
+    "word": "orange",
+    "pronunciation": "/ˈôrənj/",
+    "translation": ["n.橙子"],
+    "sentence": ["I have an orange.", "I have an orange."],
+    "createTime": "2019-12-12 12:12:12",
+    "updateTime": "2019-12-12 12:12:12"
+  },
+  {
+    "id": 6,
+    "word": "pear",
+    "pronunciation": "/per/",
+    "translation": ["n.梨子"],
+    "sentence": ["I have a pear.", "I have a pear."],
+    "createTime": "2019-12-12 12:12:12",
+    "updateTime": "2019-12-12 12:12:12"
+  },
+  {
+    "id": 7,
+    "word": "grape",
+    "pronunciation": "/ɡrāp/",
+    "translation": ["n.葡萄"],
+    "sentence": ["I have a grape.", "I have a grape."],
+    "createTime": "2019-12-12 12:12:12",
+    "updateTime": "2019-12-12 12:12:12"
+  },
+  {
+    "id": 8,
+    "word": "watermelon",
+    "pronunciation": "/ˈwôdər melən/",
+    "translation": ["n.西瓜"],
+    "sentence": ["I have a watermelon.", "I have a watermelon."],
+    "createTime": "2019-12-12 12:12:12",
+    "updateTime": "2019-12-12 12:12:12"
   }
 ]
