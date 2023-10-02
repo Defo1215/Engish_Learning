@@ -1,11 +1,21 @@
+import request from "../index";
+
 const baseURL = "/word";
 
 export default {
-  addWords: (words) => {
-    return axios.post({
-      methods: "POST",
+  addWord: (words) => {
+    return request({
+      method: "POST",
       url: `${baseURL}/save`,
       data: words,
     });
   },
+
+  findByWordBookId: (wordBookId) => {
+    return request({
+      method: "GET",
+      url: `${baseURL}/findByWordBookId/${wordBookId}`,
+    });
+  },
+
 };

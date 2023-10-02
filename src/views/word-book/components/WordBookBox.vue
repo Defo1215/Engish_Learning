@@ -1,20 +1,20 @@
 <template>
   <div >
     <!-- 单个显示模式 -->
-    <div class="grid gap-2 grid-cols-1" v-if="props.showMode === 'single'">
+    <div class="grid gap-2 grid-cols-1" v-if="props.showMode === 'single' && props.data !== null">
       <div
         class="p-4 w-full rounded-md bg-white"
         @click="emit('click', props.data)"
       >
         <div class="flex justify-between items-center">
-          <div>{{ props.data.WordBookName }}</div>
+          <div>{{ props.data.word_book_name }}</div>
           <div class="text-gray-3">总词数 · {{ props.data.quantity }}</div>
         </div>
       </div>
     </div>
 
     <!-- 多个显示模式 -->
-    <div class="grid gap-2 grid-cols-1" v-if="props.showMode === 'multiple'">
+    <div class="grid gap-2 grid-cols-1" v-if="props.showMode === 'multiple' && props.data.length > 0">
       <div
         class="p-4 w-full rounded-md bg-white"
         v-for="(item, index) in props.data"
@@ -22,7 +22,7 @@
         @click="emit('click', item)"
       >
         <div class="flex justify-between items-center">
-          <div>{{ item.WordBookName }}</div>
+          <div>{{ item.word_book_name }}</div>
           <div class="text-gray-3">总词数 · {{ item.quantity }}</div>
         </div>
       </div>
@@ -49,4 +49,6 @@ const props = defineProps({
    */
   showMode: String,
 });
+
+console.log(props.data)
 </script>

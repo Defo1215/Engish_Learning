@@ -6,7 +6,9 @@
         v-for="(item, index) in props.data"
         :key="index"
         @touchstart="touchstart(index)"
+        @touchmove="touchend"
         @touchend="touchend"
+        @click="emit('click', item.word)"
       >
         <div class="flex justify-between items-center">
           <div>{{ item.word }}</div>
@@ -17,13 +19,17 @@
     <!-- 悬浮框 -->
     <transition name="word_detail">
       <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 grid gap-2 grid-cols-1 p-4 w-80% bg-white rounded-md shadow"
+        class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 grid gap-2 grid-cols-1 p-4 w-90% bg-white rounded-md shadow"
         v-if="isLongPressIndex !== null"
       >
         <!-- 单词和音标 -->
         <div class="flex flex-nowrap justify-between items-center">
           <div class="mr-4 text-5">{{ props.data[isLongPressIndex].word }}</div>
-          <div>{{ props.data[isLongPressIndex].pronunciation }}</div>
+          <div>
+            <div>英 · /{{ props.data[isLongPressIndex].pronunciation[0] }}/</div>
+            <div>美 · /{{ props.data[isLongPressIndex].pronunciation[1] }}/</div>
+          </div>
+          
         </div>
         <!-- 单词翻译 -->
         <div class="flex">
@@ -37,12 +43,13 @@
         </div>
 
         <!-- 单词例句 -->
-        <div class="">
+        <div class="grid gap-y-2 grid-cols-1">
           <div
+            class=""
             v-for="(item, index) in props.data[isLongPressIndex].sentence"
             :key="index"
           >
-            {{ item }}
+            · {{ item }}
           </div>
         </div>
       </div>
@@ -51,6 +58,8 @@
 </template>
 
 <script setup>
+
+const emit = defineEmits(["click"]);
 
 const props = defineProps({
   /**

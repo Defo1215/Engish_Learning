@@ -1,16 +1,7 @@
-/*
- * @Author: 黄叶
- * @Date: 2023-04-19 00:43:01
- * @LastEditTime: 2023-05-30 16:06:28
- * @FilePath: /schoolWall/src/utils/axios.js
- * @Description:
- */
 import axios from "axios";
-import router from "../router/router";
-import config from "../config/config";
-import { useDialog } from "naive-ui";
 
-const baseURL = "http://localhost:9200/api"
+// const baseURL = "http://localhost:9200/api"
+const baseURL = "http://192.168.31.141:9200/api"
 
 const instance = axios.create({
   baseURL: baseURL,

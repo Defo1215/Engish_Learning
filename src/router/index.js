@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import Index from "../views/index/index.vue";
-import WordBook from "../views/wordBook/index.vue";
+import WordBook from "../views/word-book/index.vue";
 import Word from "../views/word/index.vue";
+import AddWord from "../views/add-word/index.vue";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     component: Word,
     props: true
   },
+  {
+    path: "/add-word/:wordBookId",
+    component: AddWord,
+    props: true
+  }
 ];
 
 const router = createRouter({
