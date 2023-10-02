@@ -8,7 +8,7 @@
       >
         <div class="flex justify-between items-center">
           <div>{{ props.data.word_book_name }}</div>
-          <div class="text-gray-3">总词数 · {{ props.data.quantity }}</div>
+          <div class="text-gray-3">总词数 · {{ props.data.word_count }}</div>
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
       >
         <div class="flex justify-between items-center">
           <div>{{ item.word_book_name }}</div>
-          <div class="text-gray-3">总词数 · {{ item.quantity }}</div>
+          <div class="text-gray-3">总词数 · {{ item.word_count }}</div>
         </div>
       </div>
     </div>

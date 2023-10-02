@@ -17,6 +17,8 @@ export default defineConfig({
         presetIcons({
           collections:{
             carbon: () => import('@iconify-json/carbon/icons.json').then(i => i.default),
+            uil: () => import('@iconify-json/uil/icons.json').then(i => i.default),
+            ep: () => import('@iconify-json/ep/icons.json').then(i => i.default),
           }
         })
     ]

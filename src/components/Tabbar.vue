@@ -1,8 +1,8 @@
 <template>
-  <div class="w-full py-3 bg-[#A5B4FC] rounded-4 overflow-hidden">
+  <div class="w-full py-3 bg-[#99CC33] rounded-4 overflow-hidden">
     <!-- 选择框 -->
     <div
-      class="absolute left-0 h-10 rounded-xl bg-[#6366F1] transition-all duration-300"
+      class="absolute left-0 h-10 rounded-xl bg-[#669933] transition-all duration-300"
       :style="{
         width: boxRect.width + 'px',
         transform: 'translateX(' + boxRect.left + 'px)',
@@ -62,10 +62,10 @@ onMounted(() =>
     tabIndex,
     () =>
       nextTick(() => {
-        const tabItem = tabItemRef.value.children[tabIndex.value]; // 获取选中的tab
+        const tabItem = tabItemRef.value?.children[tabIndex.value]; // 获取选中的tab
         boxRect.value = {
-          width: tabItem.offsetWidth, // 获取选中的tab的宽度
-          left: tabItem.offsetLeft, // 获取选中的tab的偏移量
+          width: tabItem?.offsetWidth, // 获取选中的tab的宽度
+          left: tabItem?.offsetLeft, // 获取选中的tab的偏移量
         };
       }),
     { immediate: true }

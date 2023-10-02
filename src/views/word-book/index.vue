@@ -11,7 +11,6 @@
 </template>
 
 <script setup>
-import wordBook from "../../config/wordBook.json"
 import router from "../../router";
 import TitleBar from "../../components/TitleBar.vue";
 import WordBookBox from "./components/WordBookBox.vue";
